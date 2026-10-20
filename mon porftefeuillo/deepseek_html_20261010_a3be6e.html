@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ameni Ben Nasr — Portfolio | Stage PFE Data BI & IA</title>
+<meta name="description" content="Portfolio d'Ameni Ben Nasr, étudiante en Business Computing (BI) à l'ESSECT. À la recherche d'un stage PFE (3-4 mois, Février 2027) en Data BI & IA. Power BI, Java, Laravel, IA générative.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230A66C2'/><text x='50' y='68' font-size='52' font-family='sans-serif' fill='white' text-anchor='middle'>AB</text></svg>">
+
+<style>
+/* ===================== VARIABLES / THEME — NAVY DARK IT ===================== */
+:root{
+  --primary:#1E90FF;
+  --primary-soft:#4DA3FF;
+  --secondary:#00E5FF;
+  --accent:#7CC7FF;
+  --grad:linear-gradient(120deg,#1E90FF 0%,#00E5FF 55%,#7CC7FF 100%);
+  --grad-soft:linear-gradient(120deg,rgba(30,144,255,.18),rgba(0,229,255,.14));
+
+  --bg:#eef4fb;
+  --bg-blob1:rgba(30,144,255,.22);
+  --bg-blob2:rgba(0,229,255,.18);
+  --card:rgba(255,255,255,.85);
+  --card-solid:#ffffff;
+  --border:rgba(30,144,255,.22);
+  --header-bg:rgba(238,244,251,.78);
+  --text:#0a1a2f;
+  --text-soft:#4a5c72;
+  --shadow:0 12px 34px rgba(10,30,60,.15);
+  --shadow-lg:0 26px 60px rgba(10,30,60,.22);
+  --particle:30,144,255;
+  --timeline-line:rgba(30,144,255,.25);
+  --grid-color:rgba(30,144,255,.06);
+}
+
+[data-theme="dark"]{
+  --bg:#060d1f;
+  --bg-deep:#030814;
+  --bg-blob1:rgba(30,144,255,.28);
+  --bg-blob2:rgba(0,229,255,.18);
+  --card:rgba(12,25,50,.72);
+  --card-solid:#0a1834;
+  --border:rgba(77,163,255,.22);
+  --header-bg:rgba(6,13,31,.82);
+  --text:#e8f1ff;
+  --text-soft:#8ea9c9;
+  --shadow:0 12px 34px rgba(0,0,0,.5);
+  --shadow-lg:0 26px 60px rgba(0,0,0,.65);
+  --particle:100,180,255;
+  --timeline-line:rgba(100,180,255,.22);
+  --grid-color:rgba(100,180,255,.055);
+}
+
+/* ===================== BASE ===================== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  overflow-x:hidden;
+  min-height:100vh;
+  transition:background .5s ease,color .5s ease;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size:44px 44px;
+  background-position:center top;
+  mask-image:radial-gradient(ellipse at center, #000 20%, transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 20%, transparent 80%);
+  transition:background-image .5s ease;
+}
+
+.halo{
+  position:fixed;border-radius:50%;filter:blur(120px);
+  z-index:0;pointer-events:none;transition:background .6s ease;
+}
+.halo-1{width:52vw;height:52vw;top:-16vw;left:-12vw;background:var(--bg-blob1);animation:float1 18s ease-in-out infinite}
+.halo-2{width:46vw;height:46vw;bottom:-16vw;right:-10vw;background:var(--bg-blob2);animation:float2 22s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(6vw,5vw)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-6vw,-5vw)}}
+
+#particles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:rgba(30,144,255,.4)}
+
+.container{width:min(1180px,92vw);margin-inline:auto;position:relative;z-index:2}
+section{padding:96px 0;scroll-margin-top:90px}
+
+/* ===================== HEADER ===================== */
+.header{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  background:var(--header-bg);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease,background .5s ease,padding .3s ease;
+}
+.header.scrolled{border-bottom-color:var(--border);box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em}
+.logo-mark{
+  width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
+  background:var(--grad);color:#fff;font-size:.85rem;font-weight:800;
+  box-shadow:0 8px 22px rgba(30,144,255,.5);
+  position:relative;
+}
+.logo-mark::after{
+  content:"";position:absolute;inset:-3px;border-radius:16px;
+  background:var(--grad);opacity:.3;filter:blur(8px);z-index:-1;
+}
+.logo-text{font-size:1.02rem}
+.logo-text .dot{color:var(--secondary)}
+
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{
+  position:relative;padding:9px 11px;border-radius:12px;font-size:.85rem;font-weight:500;
+  color:var(--text-soft);transition:color .25s ease,background .25s ease;
+}
+.nav a::after{
+  content:"";position:absolute;left:11px;right:11px;bottom:5px;height:2px;border-radius:2px;
+  background:var(--grad);transform:scaleX(0);transform-origin:var(--origin,left);
+  transition:transform .3s ease;
+}
+.nav a:hover{color:var(--text);background:var(--grad-soft)}
+.nav a:hover::after{transform:scaleX(1)}
+html[dir="rtl"] .nav a::after{transform-origin:right}
+
+.controls{display:flex;align-items:center;gap:10px}
+.lang-switch{
+  display:flex;background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:4px;gap:2px;backdrop-filter:blur(10px);
+}
+.lang-switch button{
+  padding:6px 11px;border-radius:10px;font-size:.76rem;font-weight:700;letter-spacing:.04em;
+  color:var(--text-soft);transition:all .25s ease;
+}
+.lang-switch button.active{background:var(--grad);color:#fff;box-shadow:0 6px 18px rgba(30,144,255,.45)}
+.lang-switch button:not(.active):hover{color:var(--text)}
+
+.theme-toggle{
+  width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
+  background:var(--card);border:1px solid var(--border);backdrop-filter:blur(10px);
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.theme-toggle:hover{transform:translateY(-2px) rotate(-8deg);border-color:var(--secondary);box-shadow:0 0 20px rgba(0,229,255,.3)}
+.theme-toggle svg{width:19px;height:19px;stroke:var(--text);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+[data-theme="dark"] .icon-moon{display:none}
+[data-theme="light"] .icon-sun{display:none}
+
+.burger{display:none;width:42px;height:42px;border-radius:14px;background:var(--card);border:1px solid var(--border);place-items:center}
+.burger span{display:block;width:18px;height:2px;background:var(--text);border-radius:2px;position:relative;transition:.3s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+.burger span::before{top:-6px}
+.burger span::after{top:6px}
+
+/* ===================== HERO ===================== */
+#hero{padding-top:150px;padding-bottom:80px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+
+.badge{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:999px;
+  background:var(--card);border:1px solid var(--border);backdrop-filter:blur(10px);
+  font-size:.8rem;font-weight:600;color:var(--text-soft);margin-bottom:22px;
+  box-shadow:0 0 24px rgba(30,144,255,.15);
+}
+.pulse{width:8px;height:8px;border-radius:50%;background:#00E5FF;position:relative;box-shadow:0 0 12px #00E5FF}
+.pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #00E5FF;opacity:.7;animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+
+.hero-hi{font-size:1.05rem;color:var(--text-soft);font-weight:500}
+.hero-name{
+  font-size:clamp(2.4rem,6vw,4.1rem);line-height:1.05;font-weight:800;letter-spacing:-.035em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:220% auto;animation:shine 7s linear infinite;margin:4px 0 10px;
+  filter:drop-shadow(0 4px 24px rgba(30,144,255,.35));
+}
+@keyframes shine{to{background-position:220% center}}
+.hero-role{font-size:clamp(1rem,2.1vw,1.24rem);font-weight:600;color:var(--text);margin-bottom:16px}
+.hero-role .sep{color:var(--secondary);margin:0 6px}
+.hero-desc{color:var(--text-soft);font-size:1rem;max-width:620px;margin-bottom:30px}
+.hero-desc strong{color:var(--secondary);font-weight:700}
+
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:38px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:18px;
+  font-weight:700;font-size:.92rem;transition:transform .3s ease,box-shadow .3s ease,background .3s ease;
+}
+.btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 14px 34px rgba(30,144,255,.42);background-size:200% auto}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(30,144,255,.6);background-position:right center}
+.btn-ghost{background:var(--card);border:1px solid var(--border);color:var(--text);backdrop-filter:blur(10px)}
+.btn-ghost:hover{transform:translateY(-3px);border-color:var(--secondary);box-shadow:0 0 24px rgba(0,229,255,.25)}
+
+.hero-stats{display:flex;gap:32px;flex-wrap:wrap}
+.stat-num{font-size:1.7rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.stat-label{font-size:.76rem;color:var(--text-soft);font-weight:500;letter-spacing:.01em}
+
+/* Photo */
+.hero-photo{display:flex;justify-content:center;position:relative}
+.photo-frame{
+  position:relative;width:min(380px,80vw);padding:7px;border-radius:42px;
+  background:linear-gradient(130deg,#1E90FF,#00E5FF,#7CC7FF,#1E90FF);
+  background-size:300% 300%;
+  box-shadow:0 30px 80px rgba(30,144,255,.45), 0 0 60px rgba(0,229,255,.2);
+  animation:gradmove 8s ease infinite, floaty 6s ease-in-out infinite;
+}
+@keyframes gradmove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.photo-frame img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:36px;
+  background:var(--card-solid);
+}
+.photo-deco{
+  position:absolute;inset:-26px;border-radius:56px;border:1px dashed var(--border);
+  pointer-events:none;animation:spin 40s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===================== SECTIONS ===================== */
+.sec-head{text-align:center;max-width:700px;margin:0 auto 56px}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 15px;border-radius:999px;font-size:.74rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--primary);
+  background:var(--grad-soft);border:1px solid var(--border);margin-bottom:14px;
+  font-family:'JetBrains Mono',monospace;
+}
+[data-theme="dark"] .sec-tag{color:var(--secondary)}
+.sec-tag::before{content:"<";opacity:.6}
+.sec-tag::after{content:"/>";opacity:.6}
+.sec-title{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+.sec-sub{color:var(--text-soft);font-size:.98rem}
+
+.grid{display:grid;gap:24px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:26px;padding:28px;
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px);
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s ease,border-color .35s ease;
+}
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:26px;padding:1px;
+  background:var(--grad);opacity:0;transition:opacity .35s ease;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;
+}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg),0 0 40px rgba(30,144,255,.18)}
+.card:hover::before{opacity:1}
+
+.card-icon{
+  width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px;
+  background:var(--grad);box-shadow:0 10px 26px rgba(30,144,255,.42);
+  position:relative;
+}
+.card-icon::after{
+  content:"";position:absolute;inset:-4px;border-radius:20px;
+  background:var(--grad);opacity:.35;filter:blur(10px);z-index:-1;
+}
+.card-icon svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.06rem;font-weight:700;margin-bottom:9px;letter-spacing:-.01em}
+.card p{font-size:.9rem;color:var(--text-soft)}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{
+  font-size:.73rem;font-weight:600;padding:5px 12px;border-radius:999px;
+  background:var(--grad-soft);border:1px solid var(--border);color:var(--text-soft);
+  transition:.25s ease;
+  font-family:'JetBrains Mono',monospace;
+}
+.tag:hover{color:#fff;background:var(--grad);border-color:transparent;transform:translateY(-2px);box-shadow:0 4px 14px rgba(30,144,255,.4)}
+
+/* Projets */
+.project-num{
+  font-size:.74rem;font-weight:800;letter-spacing:.14em;color:var(--secondary);margin-bottom:12px;
+  font-family:'JetBrains Mono',monospace;
+}
+.project-meta{
+  font-size:.76rem;color:var(--text-soft);font-weight:600;margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;
+}
+.project-meta svg{width:12px;height:12px;stroke:var(--text-soft);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Certifications */
+.cert{
+  display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-radius:22px;
+  background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.cert:hover{transform:translateX(8px);box-shadow:var(--shadow),0 0 30px rgba(30,144,255,.15);border-color:var(--secondary)}
+html[dir="rtl"] .cert:hover{transform:translateX(-8px)}
+.cert-check{
+  flex:0 0 40px;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
+  background:var(--grad);box-shadow:0 8px 22px rgba(30,144,255,.4);
+}
+.cert-check svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cert h4{font-size:.96rem;font-weight:700}
+.cert span{font-size:.82rem;color:var(--text-soft)}
+
+/* Timeline */
+.timeline{position:relative;padding:20px 0}
+.timeline::before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:var(--timeline-line);transform:translateX(-50%);
+}
+.tl-item{
+  position:relative;display:flex;gap:30px;margin-bottom:50px;opacity:0;
+  transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.8,.3,1),transform .8s cubic-bezier(.2,.8,.3,1);
+}
+.tl-item.visible{opacity:1;transform:none}
+.tl-item:nth-child(odd){flex-direction:row-reverse;text-align:right}
+.tl-dot{
+  position:absolute;left:50%;top:10px;width:18px;height:18px;border-radius:50%;
+  background:var(--grad);transform:translateX(-50%);
+  box-shadow:0 0 0 6px rgba(30,144,255,.18), 0 0 24px rgba(0,229,255,.6);
+  z-index:1;
+}
+.tl-content{
+  width:45%;padding:24px 28px;border-radius:24px;background:var(--card);
+  border:1px solid var(--border);backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease;
+}
+.tl-content:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg),0 0 30px rgba(30,144,255,.15)}
+.tl-date{
+  display:inline-block;padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;
+  letter-spacing:.06em;background:var(--grad-soft);border:1px solid var(--border);
+  color:var(--primary);margin-bottom:10px;
+  font-family:'JetBrains Mono',monospace;
+}
+[data-theme="dark"] .tl-date{color:var(--secondary)}
+.tl-content h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+.tl-content p{font-size:.88rem;color:var(--text-soft)}
+.tl-item.highlight .tl-content{
+  border-color:var(--secondary);
+  box-shadow:0 0 0 2px rgba(0,229,255,.25), var(--shadow-lg), 0 0 40px rgba(0,229,255,.25);
+}
+.tl-item.highlight .tl-date{
+  background:var(--grad);color:#fff;border-color:transparent;
+  box-shadow:0 6px 20px rgba(0,229,255,.4);
+}
+
+/* Langues */
+.lang-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.lang-item{
+  padding:22px 24px;border-radius:22px;background:var(--card);border:1px solid var(--border);
+  backdrop-filter:blur(14px);box-shadow:var(--shadow);
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.lang-item:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg),0 0 26px rgba(30,144,255,.18);border-color:var(--secondary)}
+.lang-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.lang-name{font-size:1rem;font-weight:700}
+.lang-level{font-size:.76rem;font-weight:700;color:var(--secondary);letter-spacing:.05em;font-family:'JetBrains Mono',monospace}
+.lang-bar{height:6px;border-radius:999px;background:var(--grad-soft);overflow:hidden;position:relative}
+.lang-bar::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;border-radius:999px;
+  background:var(--grad);width:var(--lvl,50%);transition:width 1.2s cubic-bezier(.2,.8,.3,1);
+  box-shadow:0 0 12px rgba(0,229,255,.5);
+}
+.lang-note{font-size:.78rem;color:var(--text-soft);margin-top:10px}
+
+/* Leadership */
+.lead-card{
+  display:flex;gap:18px;align-items:flex-start;padding:24px;border-radius:24px;
+  background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px);
+  box-shadow:var(--shadow);
+  transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s ease,border-color .35s ease;
+}
+.lead-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg),0 0 32px rgba(30,144,255,.18);border-color:var(--secondary)}
+.lead-icon{
+  flex:0 0 50px;width:50px;height:50px;border-radius:16px;display:grid;place-items:center;
+  background:var(--grad);box-shadow:0 10px 24px rgba(30,144,255,.4);
+}
+.lead-icon svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.lead-card h4{font-size:1rem;font-weight:700;margin-bottom:4px}
+.lead-card .role{font-size:.8rem;font-weight:600;color:var(--secondary);letter-spacing:.03em;margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.lead-card p{font-size:.86rem;color:var(--text-soft)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:14px}
+.ci-item{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;
+  background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px);
+  transition:.3s ease;
+}
+.ci-item:hover{transform:translateY(-4px);box-shadow:var(--shadow),0 0 24px rgba(30,144,255,.18);border-color:var(--secondary)}
+.ci-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:var(--grad);flex:0 0 42px;box-shadow:0 8px 20px rgba(30,144,255,.35)}
+.ci-icon svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ci-item small{display:block;font-size:.72rem;color:var(--text-soft);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+.ci-item strong{font-size:.9rem;font-weight:600;word-break:break-word}
+
+.form{display:grid;gap:14px}
+.field{position:relative}
+.field input,.field textarea{
+  width:100%;padding:15px 18px;border-radius:18px;font-family:inherit;font-size:.9rem;
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  backdrop-filter:blur(14px);transition:.3s ease;outline:none;resize:vertical;
+}
+.field textarea{min-height:130px}
+.field input::placeholder,.field textarea::placeholder{color:var(--text-soft);opacity:.75}
+.field input:focus,.field textarea:focus{border-color:var(--secondary);box-shadow:0 0 0 4px rgba(0,229,255,.15),0 0 24px rgba(0,229,255,.2)}
+.form .btn-primary{justify-content:center;width:100%}
+.form-msg{
+  font-size:.85rem;font-weight:600;color:#00E5FF;text-align:center;
+  opacity:0;transform:translateY(-6px);transition:.4s ease;height:0;
+}
+.form-msg.show{opacity:1;transform:translateY(0);height:auto}
+
+/* Footer */
+.footer{
+  border-top:1px solid var(--border);padding:36px 0;text-align:center;
+  position:relative;z-index:2;background:rgba(3,8,20,.4);
+}
+.footer p{font-size:.85rem;color:var(--text-soft)}
+.footer .heart{color:var(--secondary)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.3,1),transform .8s cubic-bezier(.2,.8,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:1024px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .hero-grid{grid-template-columns:1fr;gap:48px;text-align:center}
+  .hero-photo{order:-1}
+  .hero-desc{margin-inline:auto}
+  .hero-actions,.hero-stats{justify-content:center}
+  .contact-grid{grid-template-columns:1fr}
+  .lang-grid{grid-template-columns:repeat(2,1fr)}
+  .timeline::before{left:30px}
+  .tl-item,.tl-item:nth-child(odd){flex-direction:column;text-align:left;padding-left:70px}
+  .tl-dot{left:30px}
+  .tl-content{width:100%}
+}
+@media (max-width:820px){
+  .nav{
+    position:absolute;top:calc(100% + 10px);left:4vw;width:92vw;
+    flex-direction:column;align-items:stretch;gap:4px;padding:14px;
+    background:var(--card-solid);border:1px solid var(--border);border-radius:24px;
+    box-shadow:var(--shadow-lg);backdrop-filter:blur(20px);
+    opacity:0;visibility:hidden;transform:translateY(-12px);transition:.3s ease;
+  }
+  .nav.open{opacity:1;visibility:visible;transform:none}
+  .nav a{padding:12px 16px}
+  .burger{display:grid}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .lang-grid{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  section{padding:72px 0}
+  #hero{padding-top:120px}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .logo-text{display:none}
+  .lang-switch button{padding:6px 9px;font-size:.72rem}
+  .hero-stats{gap:22px}
+  .card{padding:22px}
+  .cert:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="halo halo-1"></div>
+<div class="halo halo-2"></div>
+
+<canvas id="particles"></canvas>
+
+<!-- ===================== HEADER ===================== -->
+<header class="header" id="header">
+  <div class="container nav-wrap">
+    <a href="#hero" class="logo">
+      <span class="logo-mark">AB</span>
+      <span class="logo-text">Ameni<span class="dot">.</span>Ben Nasr</span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#parcours" data-i18n="nav.parcours">Parcours</a>
+      <a href="#skills"  data-i18n="nav.skills">Compétences</a>
+      <a href="#projects" data-i18n="nav.projects">Projets</a>
+      <a href="#certs"   data-i18n="nav.certs">Certifications</a>
+      <a href="#langues" data-i18n="nav.langues">Langues</a>
+      <a href="#leadership" data-i18n="nav.leadership">Engagements</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+
+    <div class="controls">
+      <div class="lang-switch" id="langSwitch">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="ar">AR</button>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+
+      <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="badge reveal"><span class="pulse"></span><span data-i18n="hero.badge">🎯 À la recherche d'un stage PFE — Février 2027</span></div>
+      <p class="hero-hi reveal" data-i18n="hero.hi">Bonjour, je suis</p>
+      <h1 class="hero-name reveal">Ameni Ben Nasr</h1>
+      <p class="hero-role reveal">
+        <span data-i18n="hero.role1">Business Computing</span>
+        <span class="sep">·</span>
+        <span data-i18n="hero.role2">Data BI &amp; IA</span>
+        <span class="sep">·</span>
+        <span data-i18n="hero.role3">Fondatrice d'Aralumina Production</span>
+      </p>
+      <p class="hero-desc reveal" data-i18n="hero.desc">
+        Étudiante en Business Computing (BI) à l'ESSECT, je recherche un <strong>stage PFE de 3 à 4 mois à partir de Février 2027</strong> en <strong>Data BI &amp; Intelligence Artificielle</strong>. Passionnée par la data, l'IA générative et le storytelling digital, je transforme des idées en solutions concrètes — du dashboard Power BI au pipeline IA automatisé.
+      </p>
+
+      <div class="hero-actions reveal">
+        <button class="btn btn-primary" id="downloadCv">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span data-i18n="hero.ctaCv">Télécharger mon CV</span>
+        </button>
+        <a class="btn btn-ghost" href="#contact">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 7l8 6 8-6"/></svg>
+          <span data-i18n="hero.ctaContact">Me contacter</span>
+        </a>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div><div class="stat-num">PFE</div><div class="stat-label" data-i18n="hero.stat1">Février 2027 · 3-4 mois</div></div>
+        <div><div class="stat-num">4+</div><div class="stat-label" data-i18n="hero.stat2">Projets Data &amp; IA livrés</div></div>
+        <div><div class="stat-num">6</div><div class="stat-label" data-i18n="hero.stat3">Langues parlées</div></div>
+      </div>
+    </div>
+
+    <div class="hero-photo reveal">
+      <div class="photo-frame">
+        <div class="photo-deco"></div>
+        <!-- 📸 PHOTO — remplacez la valeur de src par votre photo ou son base64 -->
+        <img id="profilePhoto" src="ameni-ben-nasr.jpg" alt="Photo de profil d'Ameni Ben Nasr">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARCOURS (TIMELINE) ===================== -->
+<section id="parcours">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag" data-i18n="parcours.tag">Parcours</span>
+      <h2 class="sec-title" data-i18n="parcours.title">Mon histoire</h2>
+      <p class="sec-sub" data-i18n="parcours.subtitle">De la curiosité technique à la création d'un studio digital.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <span class="tl-date">2024</span>
+          <h4 data-i18n="parcours.i1t">Entrée à l'ESSECT — Business Computing</h4>
+          <p data-i18n="parcours.i1d">Intégration de la Licence Business Computing (BI) à l'École Supérieure des Sciences Économiques et Commerciales de Tunis. Découverte de l'algorithmique, des SI et de la Business Intelligence.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <span class="tl-date">2024 - 2025</span>
+          <h4 data-i18n="parcours.i2t">Implication associative &amp; leadership</h4>
+          <p data-i18n="parcours.i2d">Membre actif du département IT d'EcoFinTech ESSECT, de Fahmologia, d'Infolab et du Club Radio. Rédaction de scripts et stratégie de contenu pour des vidéos virales.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <span class="tl-date">2025</span>
+          <h4 data-i18n="parcours.i3t">Naissance d'Aralumina Production</h4>
+          <p data-i18n="parcours.i3d">Création de mon propre studio digital IA-powered. Lancement de la série "Cook with Ara" sur YouTube, Reels et TikTok — fusion de gastronomie et de technologie.</p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <span class="tl-date">2025</span>
+          <h4 data-i18n="parcours.i4t">Projets techniques &amp; IA</h4>
+          <p data-i18n="parcours.i4d">Développement de Coach IA (Java/JavaFX/MySQL + Gemini API), Dreamscapes (Laravel + LLM) et d'un pipeline de génération de contenu vidéo éducatif.</p>
+        </div>
+      </div>
+
+      <div class="tl-item highlight reveal">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <span class="tl-date">2026 — 2027</span>
+          <h4 data-i18n="parcours.i5t">🎯 Objectif PFE — Février 2027</h4>
+          <p data-i18n="parcours.i5d">Certification DATA-DECODED 1.1 en Power BI obtenue en avril 2026. À la recherche d'un stage PFE de 3 à 4 mois à partir de Février 2027 en <strong>Data BI &amp; Intelligence Artificielle</strong> pour contribuer à des projets à fort impact au sein d'une équipe innovante.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag" data-i18n="skills.tag">Compétences</span>
+      <h2 class="sec-title" data-i18n="skills.title">Ma boîte à outils</h2>
+      <p class="sec-sub" data-i18n="skills.subtitle">Un profil hybride : data, développement, IA et création de contenu.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
+        <h3 data-i18n="skills.c1t">Data &amp; Business Intelligence</h3>
+        <p data-i18n="skills.c1d">Collecte, modélisation et visualisation de données pour la prise de décision.</p>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">MySQL / SQL</span><span class="tag">Python (NumPy)</span><span class="tag">Google Apps Script</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h3 data-i18n="skills.c2t">Développement &amp; Architecture</h3>
+        <p data-i18n="skills.c2d">Conception et développement d'applications desktop et web, du modèle UML au code.</p>
+        <div class="tags"><span class="tag">Java (OOP)</span><span class="tag">JavaFX</span><span class="tag">Laravel (PHP)</span><span class="tag">JavaScript</span><span class="tag">Git / GitHub</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3 1.1 6.3L12 16.8 6.4 19.5l1.1-6.3L3 8.9 9 8z"/></svg></div>
+        <h3 data-i18n="skills.c3t">IA Générative &amp; Prompt Engineering</h3>
+        <p data-i18n="skills.c3d">Maîtrise d'un large éventail d'outils IA pour la création de contenu et l'automatisation.</p>
+        <div class="tags"><span class="tag">Gemini</span><span class="tag">ChatGPT</span><span class="tag">Claude</span><span class="tag">DeepSeek</span><span class="tag">Perplexity</span><span class="tag">Kling / Veo3 / Luma</span><span class="tag">LTX Studio</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3 data-i18n="skills.c4t">Outils &amp; Méthodes</h3>
+        <p data-i18n="skills.c4d">Environnement de travail moderne, gestion de projet agile et design.</p>
+        <div class="tags"><span class="tag">VS Code</span><span class="tag">PlantUML</span><span class="tag">Draw.io</span><span class="tag">Jira (Scrum)</span><span class="tag">Canva</span><span class="tag">Notion</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJETS ===================== -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag" data-i18n="projects.tag">Projets</span>
+      <h2 class="sec-title" data-i18n="projects.title">Réalisations concrètes</h2>
+      <p class="sec-sub" data-i18n="projects.subtitle">Des projets qui allient code, data et intelligence artificielle.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <article class="card reveal">
+        <div class="project-num">01</div>
+        <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8M12 18v2"/></svg></div>
+        <h3 data-i18n="projects.p1t">Coach IA — Application Desktop Java</h3>
+        <div class="project-meta"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg><span>2025 · Java &amp; IA</span></div>
+        <p data-i18n="projects.p1d">Application de gestion de tâches personnelles en architecture 3-tiers (JavaFX / logique métier / MySQL). Intégration de l'API Gemini pour la décomposition intelligente des tâches, des plans personnalisés sur 7 jours et des recommandations IA.</p>
+        <div class="tags"><span class="tag">Java OOP</span><span class="tag">JavaFX</span><span class="tag">MySQL</span><span class="tag">Gemini API</span><span class="tag">UML</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="project-num">02</div>
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg></div>
+        <h3 data-i18n="projects.p2t">Dreamscapes — Moteur de narration (Laravel)</h3>
+        <div class="project-meta"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg><span>2025 · Full-Stack</span></div>
+        <p data-i18n="projects.p2d">Refonte complète de la plateforme sur une architecture MVC Laravel robuste et maintenable. Intégration de LLM pour la génération narrative combinée à une production visuelle via LTX Studio, Kling et Luma.</p>
+        <div class="tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">LLM</span><span class="tag">MVC</span><span class="tag">LTX Studio</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="project-num">03</div>
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M15 10l4.5-2.5v9L15 14M4 6h9a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg></div>
+        <h3 data-i18n="projects.p3t">Pipeline IA — Vidéo éducative</h3>
+        <div class="project-meta"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg><span>2025 · Automatisation</span></div>
+        <p data-i18n="projects.p3d">Conception d'un pipeline de collecte et structuration de données convertissant une saisie utilisateur en contenu vidéo court. Scripts générés avec ChatGPT et Gemini, visuels avec Pixiverse et Kartonify, workflow automatisé via Google Apps Script.</p>
+        <div class="tags"><span class="tag">Google Apps Script</span><span class="tag">ChatGPT</span><span class="tag">Gemini</span><span class="tag">Pixiverse</span><span class="tag">Automation</span></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="project-num">04</div>
+        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20z"/></svg></div>
+        <h3 data-i18n="projects.p4t">Aralumina Production — Studio Digital IA</h3>
+        <div class="project-meta"><svg viewBox="0 0 24 24"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg><span>2025 - Présent · Fondatrice</span></div>
+        <p data-i18n="projects.p4d">Studio de contenu digital produisant la série "Cook with Ara" sur YouTube, Reels et TikTok — fusion de gastronomie et de technologie. Direction d'un workflow IA de bout en bout : génération de séquences (Kling, Veo3, Luma), storyboard et post-production. Identité visuelle de la marque Testouria Bio.</p>
+        <div class="tags"><span class="tag">Content Strategy</span><span class="tag">Video AI</span><span class="tag">Branding</span><span class="tag">YouTube / TikTok</span><span class="tag">Canva</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CERTIFICATIONS ===================== -->
+<section id="certs">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag" data-i18n="certs.tag">Certifications</span>
+      <h2 class="sec-title" data-i18n="certs.title">Formations &amp; certificats</h2>
+      <p class="sec-sub" data-i18n="certs.subtitle">Un apprentissage continu, entre data, développement et IA.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="cert reveal">
+        <div class="cert-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><h4 data-i18n="certs.i1t">DATA-DECODED 1.1 — Power BI</h4><span data-i18n="certs.i1s">Certification obtenue en avril 2026 · Dashboards &amp; DAX</span></div>
+      </div>
+      <div class="cert reveal">
+        <div class="cert-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><h4 data-i18n="certs.i2t">Licence Business Computing (BI)</h4><span data-i18n="certs.i2s">ESSECT — Sept 2024 · Juin 2027 (prévu)</span></div>
+      </div>
+      <div class="cert reveal">
+        <div class="cert-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><h4 data-i18n="certs.i3t">Java OOP &amp; JavaFX</h4><span data-i18n="certs.i3s">Projet Coach IA — architecture 3-tiers documentée (UML)</span></div>
+      </div>
+      <div class="cert reveal">
+        <div class="cert-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><h4 data-i18n="certs.i4t">Laravel MVC &amp; Full-Stack</h4><span data-i18n="certs.i4s">Projet Dreamscapes — refonte complète de la plateforme</span></div>
+      </div>
+      <div class="cert reveal">
+        <div class="cert-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><h4 data-i18n="certs.i5t">IA Générative &amp; Prompt Engineering</h4><span data-i18n="certs.i5s">Maîtrise de 10+ outils IA (LLM, vidéo, image)</span></div>
+      </div>
+      <div class="cert reveal">
+        <div class="cert-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div><h4 data-i18n="certs.i6t">Scrum &amp; Gestion de projet</h4><span data-i18n="certs.i6s">Pratique de Jira et des méthodes agiles en équipe projet</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LANGUES ===================== -->
+<section id="langues">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag" data-i18n="langues.tag">Langues</span>
+      <h2 class="sec-title" data-i18n="langues.title">Un profil multiculturel</h2>
+      <p class="sec-sub" data-i18n="langues.subtitle">6 langues, 3 continents, une ouverture sur le monde.</p>
+    </div>
+
+    <div class="lang-grid">
+      <div class="lang-item reveal">
+        <div class="lang-head"><span class="lang-name">العربية</span><span class="lang-level">NATIF</span></div>
+        <div class="lang-bar" style="--lvl:100%"></div>
+        <p class="lang-note" data-i18n="langues.ar">Langue maternelle</p>
+      </div>
+
+      <div class="lang-item reveal">
+        <div class="lang-head"><span class="lang-name">Français</span><span class="lang-level">B2</span></div>
+        <div class="lang-bar" style="--lvl:80%"></div>
+        <p class="lang-note" data-i18n="langues.fr">Courant — études et travail</p>
+      </div>
+
+      <div class="lang-item reveal">
+        <div class="lang-head"><span class="lang-name">English</span><span class="lang-level">B1</span></div>
+        <div class="lang-bar" style="--lvl:65%"></div>
+        <p class="lang-note" data-i18n="langues.en">Professionnel — lecture technique</p>
+      </div>
+
+      <div class="lang-item reveal">
+        <div class="lang-head"><span class="lang-name">한국어</span><span class="lang-level">A2 · 84/100</span></div>
+        <div class="lang-bar" style="--lvl:45%"></div>
+        <p class="lang-note" data-i18n="langues.ko">En progression — TOPIK en préparation</p>
+      </div>
+
+      <div class="lang-item reveal">
+        <div class="lang-head"><span class="lang-name">Deutsch</span><span class="lang-level">A1</span></div>
+        <div class="lang-bar" style="--lvl:25%"></div>
+        <p class="lang-note" data-i18n="langues.de">Débutante</p>
+      </div>
+
+      <div class="lang-item reveal">
+        <div class="lang-head"><span class="lang-name">Türkçe</span><span class="lang-level">A1</span></div>
+        <div class="lang-bar" style="--lvl:25%"></div>
+        <p class="lang-note" data-i18n="langues.tr">Débutante</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEADERSHIP ===================== -->
+<section id="leadership">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag" data-i18n="leadership.tag">Engagements</span>
+      <h2 class="sec-title" data-i18n="leadership.title">Leadership &amp; vie associative</h2>
+      <p class="sec-sub" data-i18n="leadership.subtitle">S'impliquer, créer, transmettre.</p>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="lead-card reveal">
+        <div class="lead-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div>
+        <div>
+          <h4 data-i18n="leadership.l1t">EcoFinTech ESSECT — Département IT</h4>
+          <div class="role" data-i18n="leadership.l1r">Membre actif · Content Strategy</div>
+          <p data-i18n="leadership.l1d">Direction de la stratégie de contenu et rédaction de scripts pour des vidéos publiées sur la page Instagram officielle du club.</p>
+        </div>
+      </div>
+
+      <div class="lead-card reveal">
+        <div class="lead-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3 1.1 6.3L12 16.8 6.4 19.5l1.1-6.3L3 8.9 9 8z"/></svg></div>
+        <div>
+          <h4 data-i18n="leadership.l2t">Fahmologia ESSECT</h4>
+          <div class="role" data-i18n="leadership.l2r">Membre actif</div>
+          <p data-i18n="leadership.l2d">Participation aux activités du club : événements, ateliers et initiatives étudiantes.</p>
+        </div>
+      </div>
+
+      <div class="lead-card reveal">
+        <div class="lead-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20M7 4v16"/></svg></div>
+        <div>
+          <h4 data-i18n="leadership.l3t">Infolab ESSECT</h4>
+          <div class="role" data-i18n="leadership.l3r">Ancien membre</div>
+          <p data-i18n="leadership.l3d">Première expérience associative autour de l'informatique et de l'innovation numérique.</p>
+        </div>
+      </div>
+
+      <div class="lead-card reveal">
+        <div class="lead-icon"><svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg></div>
+        <div>
+          <h4 data-i18n="leadership.l4t">Club Radio ESSECT</h4>
+          <div class="role" data-i18n="leadership.l4r">Ancien membre</div>
+          <p data-i18n="leadership.l4d">Contribution à la production audio et à l'animation radiophonique étudiante.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="sec-tag" data-i18n="contact.tag">Contact</span>
+      <h2 class="sec-title" data-i18n="contact.title">Travaillons ensemble</h2>
+      <p class="sec-sub" data-i18n="contact.subtitle">À la recherche d'un stage PFE en Data BI &amp; IA (Février 2027) ? Discutons-en.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <a class="ci-item" href="mailto:ameni.bennasr@essect.u-tunis.tn">
+          <span class="ci-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><small>Email</small><strong>ameni01bennasr@gmail.com</strong></span>
+        </a>
+        <a class="ci-item" href="tel:+21656623380">
+          <span class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></span>
+          <span><small>Téléphone</small><strong>+216 56 623 380</strong></span>
+        </a>
+        <div class="ci-item">
+          <span class="ci-icon"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><small data-i18n="contact.locLabel">Localisation</small><strong data-i18n="contact.loc">Tunis, Tunisie — ESSECT</strong></span>
+        </div>
+        <a class="ci-item" href="https://www.linkedin.com/in/ameni-ben-nasr-/" target="_blank" rel="noopener">
+          <span class="ci-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+          <span><small>LinkedIn</small><strong>linkedin.com/in/ameni-ben-nasr-</strong></span>
+        </a>
+        <a class="ci-item" href="https://github.com/ameni03bennasr-create" target="_blank" rel="noopener">
+          <span class="ci-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></span>
+          <span><small>GitHub</small><strong>github.com/ameni03bennasr-create</strong></span>
+        </a>
+      </div>
+
+      <form class="form reveal" id="contactForm">
+        <div class="field"><input type="text" id="cName" required data-i18n-ph="contact.name"></div>
+        <div class="field"><input type="email" id="cEmail" required data-i18n-ph="contact.email"></div>
+        <div class="field"><input type="text" id="cSubject" required data-i18n-ph="contact.subject" value="Stage PFE — Data BI &amp; IA — Février 2027"></div>
+        <div class="field"><textarea id="cMsg" required data-i18n-ph="contact.message"></textarea></div>
+        <button type="submit" class="btn btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span data-i18n="contact.send">Envoyer le message</span>
+        </button>
+        <p class="form-msg" id="formMsg" data-i18n="contact.success">Merci ! Votre message a bien été envoyé.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 <strong>Ameni Ben Nasr</strong> — ESSECT <span class="heart">•</span> <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   1. TRADUCTIONS (FR / EN / AR)
+   ========================================================= */
+const I18N = {
+  fr: {
+    "nav.parcours":"Parcours","nav.skills":"Compétences","nav.projects":"Projets","nav.certs":"Certifications","nav.langues":"Langues","nav.leadership":"Engagements","nav.contact":"Contact",
+    "hero.badge":"🎯 À la recherche d'un stage PFE — Février 2027","hero.hi":"Bonjour, je suis",
+    "hero.role1":"Business Computing","hero.role2":"Data BI & IA","hero.role3":"Fondatrice d'Aralumina Production",
+    "hero.desc":"Étudiante en Business Computing (BI) à l'ESSECT, je recherche un <strong>stage PFE de 3 à 4 mois à partir de Février 2027</strong> en <strong>Data BI &amp; Intelligence Artificielle</strong>. Passionnée par la data, l'IA générative et le storytelling digital, je transforme des idées en solutions concrètes — du dashboard Power BI au pipeline IA automatisé.",
+    "hero.ctaCv":"Télécharger mon CV","hero.ctaContact":"Me contacter",
+    "hero.stat1":"Février 2027 · 3-4 mois","hero.stat2":"Projets Data & IA livrés","hero.stat3":"Langues parlées",
+
+    "parcours.tag":"Parcours","parcours.title":"Mon histoire","parcours.subtitle":"De la curiosité technique à la création d'un studio digital.",
+    "parcours.i1t":"Entrée à l'ESSECT — Business Computing","parcours.i1d":"Intégration de la Licence Business Computing (BI) à l'ESSECT. Découverte de l'algorithmique, des SI et de la Business Intelligence.",
+    "parcours.i2t":"Implication associative & leadership","parcours.i2d":"Membre actif du département IT d'EcoFinTech ESSECT, de Fahmologia, d'Infolab et du Club Radio. Rédaction de scripts et stratégie de contenu pour des vidéos virales.",
+    "parcours.i3t":"Naissance d'Aralumina Production","parcours.i3d":"Création de mon propre studio digital IA-powered. Lancement de la série Cook with Ara sur YouTube, Reels et TikTok — fusion de gastronomie et de technologie.",
+    "parcours.i4t":"Projets techniques & IA","parcours.i4d":"Développement de Coach IA (Java/JavaFX/MySQL + Gemini API), Dreamscapes (Laravel + LLM) et d'un pipeline de génération de contenu vidéo éducatif.",
+    "parcours.i5t":"🎯 Objectif PFE — Février 2027","parcours.i5d":"Certification DATA-DECODED 1.1 en Power BI obtenue en avril 2026. À la recherche d'un stage PFE de 3 à 4 mois à partir de Février 2027 en <strong>Data BI &amp; Intelligence Artificielle</strong> pour contribuer à des projets à fort impact au sein d'une équipe innovante.",
+
+    "skills.tag":"Compétences","skills.title":"Ma boîte à outils","skills.subtitle":"Un profil hybride : data, développement, IA et création de contenu.",
+    "skills.c1t":"Data & Business Intelligence","skills.c1d":"Collecte, modélisation et visualisation de données pour la prise de décision.",
+    "skills.c2t":"Développement & Architecture","skills.c2d":"Conception et développement d'applications desktop et web, du modèle UML au code.",
+    "skills.c3t":"IA Générative & Prompt Engineering","skills.c3d":"Maîtrise d'un large éventail d'outils IA pour la création de contenu et l'automatisation.",
+    "skills.c4t":"Outils & Méthodes","skills.c4d":"Environnement de travail moderne, gestion de projet agile et design.",
+
+    "projects.tag":"Projets","projects.title":"Réalisations concrètes","projects.subtitle":"Des projets qui allient code, data et intelligence artificielle.",
+    "projects.p1t":"Coach IA — Application Desktop Java","projects.p1d":"Application de gestion de tâches personnelles en architecture 3-tiers (JavaFX / logique métier / MySQL). Intégration de l'API Gemini pour la décomposition intelligente des tâches, des plans personnalisés sur 7 jours et des recommandations IA.",
+    "projects.p2t":"Dreamscapes — Moteur de narration (Laravel)","projects.p2d":"Refonte complète de la plateforme sur une architecture MVC Laravel robuste et maintenable. Intégration de LLM pour la génération narrative combinée à une production visuelle via LTX Studio, Kling et Luma.",
+    "projects.p3t":"Pipeline IA — Vidéo éducative","projects.p3d":"Conception d'un pipeline de collecte et structuration de données convertissant une saisie utilisateur en contenu vidéo court. Scripts générés avec ChatGPT et Gemini, visuels avec Pixiverse et Kartonify, workflow automatisé via Google Apps Script.",
+    "projects.p4t":"Aralumina Production — Studio Digital IA","projects.p4d":"Studio de contenu digital produisant la série Cook with Ara sur YouTube, Reels et TikTok — fusion de gastronomie et de technologie. Direction d'un workflow IA de bout en bout : génération de séquences (Kling, Veo3, Luma), storyboard et post-production. Identité visuelle de la marque Testouria Bio.",
+
+    "certs.tag":"Certifications","certs.title":"Formations & certificats","certs.subtitle":"Un apprentissage continu, entre data, développement et IA.",
+    "certs.i1t":"DATA-DECODED 1.1 — Power BI","certs.i1s":"Certification obtenue en avril 2026 · Dashboards & DAX",
+    "certs.i2t":"Licence Business Computing (BI)","certs.i2s":"ESSECT — Sept 2024 · Juin 2027 (prévu)",
+    "certs.i3t":"Java OOP & JavaFX","certs.i3s":"Projet Coach IA — architecture 3-tiers documentée (UML)",
+    "certs.i4t":"Laravel MVC & Full-Stack","certs.i4s":"Projet Dreamscapes — refonte complète de la plateforme",
+    "certs.i5t":"IA Générative & Prompt Engineering","certs.i5s":"Maîtrise de 10+ outils IA (LLM, vidéo, image)",
+    "certs.i6t":"Scrum & Gestion de projet","certs.i6s":"Pratique de Jira et des méthodes agiles en équipe projet",
+
+    "langues.tag":"Langues","langues.title":"Un profil multiculturel","langues.subtitle":"6 langues, 3 continents, une ouverture sur le monde.",
+    "langues.ar":"Langue maternelle","langues.fr":"Courant — études et travail","langues.en":"Professionnel — lecture technique",
+    "langues.ko":"En progression — TOPIK en préparation","langues.de":"Débutante","langues.tr":"Débutante",
+
+    "leadership.tag":"Engagements","leadership.title":"Leadership & vie associative","leadership.subtitle":"S'impliquer, créer, transmettre.",
+    "leadership.l1t":"EcoFinTech ESSECT — Département IT","leadership.l1r":"Membre actif · Content Strategy","leadership.l1d":"Direction de la stratégie de contenu et rédaction de scripts pour des vidéos publiées sur la page Instagram officielle du club.",
+    "leadership.l2t":"Fahmologia ESSECT","leadership.l2r":"Membre actif","leadership.l2d":"Participation aux activités du club : événements, ateliers et initiatives étudiantes.",
+    "leadership.l3t":"Infolab ESSECT","leadership.l3r":"Ancien membre","leadership.l3d":"Première expérience associative autour de l'informatique et de l'innovation numérique.",
+    "leadership.l4t":"Club Radio ESSECT","leadership.l4r":"Ancien membre","leadership.l4d":"Contribution à la production audio et à l'animation radiophonique étudiante.",
+
+    "contact.tag":"Contact","contact.title":"Travaillons ensemble","contact.subtitle":"À la recherche d'un stage PFE en Data BI & IA (Février 2027) ? Discutons-en.",
+    "contact.name":"Votre nom","contact.email":"Votre email","contact.subject":"Sujet","contact.message":"Votre message",
+    "contact.send":"Envoyer le message","contact.success":"Merci ! Votre message a bien été envoyé.",
+    "contact.locLabel":"Localisation","contact.loc":"Tunis, Tunisie — ESSECT",
+
+    "footer.rights":"Tous droits réservés."
+  },
+  en: {
+    "nav.parcours":"Journey","nav.skills":"Skills","nav.projects":"Projects","nav.certs":"Certifications","nav.langues":"Languages","nav.leadership":"Involvement","nav.contact":"Contact",
+    "hero.badge":"🎯 Looking for a PFE internship — February 2027","hero.hi":"Hi, I'm",
+    "hero.role1":"Business Computing","hero.role2":"Data BI & AI","hero.role3":"Founder of Aralumina Production",
+    "hero.desc":"Business Computing (BI) student at ESSECT, I'm looking for a <strong>3-4 month PFE internship starting February 2027</strong> in <strong>Data BI &amp; Artificial Intelligence</strong>. Passionate about data, generative AI and digital storytelling, I turn ideas into concrete solutions — from Power BI dashboards to automated AI pipelines.",
+    "hero.ctaCv":"Download my CV","hero.ctaContact":"Contact me",
+    "hero.stat1":"February 2027 · 3-4 months","hero.stat2":"Data & AI projects delivered","hero.stat3":"Languages spoken",
+
+    "parcours.tag":"Journey","parcours.title":"My story","parcours.subtitle":"From technical curiosity to creating a digital studio.",
+    "parcours.i1t":"Joined ESSECT — Business Computing","parcours.i1d":"Started the Business Computing (BI) Bachelor at ESSECT. Discovered algorithms, information systems and Business Intelligence.",
+    "parcours.i2t":"Student involvement & leadership","parcours.i2d":"Active member of the IT Department at EcoFinTech ESSECT, Fahmologia, Infolab and Club Radio. Content strategy and scripting for viral videos.",
+    "parcours.i3t":"Birth of Aralumina Production","parcours.i3d":"Founded my own AI-powered digital studio. Launched the Cook with Ara series on YouTube, Reels and TikTok — blending gastronomy and technology.",
+    "parcours.i4t":"Technical projects & AI","parcours.i4d":"Built Coach IA (Java/JavaFX/MySQL + Gemini API), Dreamscapes (Laravel + LLM) and an educational video content generation pipeline.",
+    "parcours.i5t":"🎯 PFE objective — February 2027","parcours.i5d":"Earned the DATA-DECODED 1.1 Power BI certification in April 2026. Looking for a 3-4 month PFE internship starting February 2027 in <strong>Data BI &amp; Artificial Intelligence</strong> to contribute to high-impact projects within an innovative team.",
+
+    "skills.tag":"Skills","skills.title":"My toolbox","skills.subtitle":"A hybrid profile: data, development, AI and content creation.",
+    "skills.c1t":"Data & Business Intelligence","skills.c1d":"Data collection, modeling and visualization for decision-making.",
+    "skills.c2t":"Development & Architecture","skills.c2d":"Design and development of desktop and web applications, from UML to code.",
+    "skills.c3t":"Generative AI & Prompt Engineering","skills.c3d":"Mastery of a wide range of AI tools for content creation and automation.",
+    "skills.c4t":"Tools & Methods","skills.c4d":"Modern work environment, agile project management and design.",
+
+    "projects.tag":"Projects","projects.title":"Concrete work","projects.subtitle":"Projects combining code, data and artificial intelligence.",
+    "projects.p1t":"Coach IA — Java Desktop Application","projects.p1d":"Personal task management app built on a 3-tier architecture (JavaFX / business logic / MySQL). Integrated the Gemini API for intelligent task breakdown, 7-day personalized plans and AI-driven recommendations.",
+    "projects.p2t":"Dreamscapes — Storytelling Engine (Laravel)","projects.p2d":"Full rebuild of the platform on a robust, maintainable Laravel MVC architecture. Integrated LLMs for narrative generation combined with visual production via LTX Studio, Kling and Luma.",
+    "projects.p3t":"AI Pipeline — Educational Video","projects.p3d":"Designed a data collection and structuring pipeline converting user input into short-form video content. Scripts generated with ChatGPT and Gemini, visuals with Pixiverse and Kartonify, workflow automated via Google Apps Script.",
+    "projects.p4t":"Aralumina Production — AI Digital Studio","projects.p4d":"Digital content studio producing the Cook with Ara series on YouTube, Reels and TikTok — blending gastronomy and technology. Directed an end-to-end AI workflow: sequence generation (Kling, Veo3, Luma), storyboarding and post-production. Brand identity for Testouria Bio.",
+
+    "certs.tag":"Certifications","certs.title":"Training & certificates","certs.subtitle":"Continuous learning across data, development and AI.",
+    "certs.i1t":"DATA-DECODED 1.1 — Power BI","certs.i1s":"Certified April 2026 · Dashboards & DAX",
+    "certs.i2t":"Bachelor in Business Computing (BI)","certs.i2s":"ESSECT — Sept 2024 · Jun 2027 (expected)",
+    "certs.i3t":"Java OOP & JavaFX","certs.i3s":"Coach IA project — documented 3-tier architecture (UML)",
+    "certs.i4t":"Laravel MVC & Full-Stack","certs.i4s":"Dreamscapes project — full platform rebuild",
+    "certs.i5t":"Generative AI & Prompt Engineering","certs.i5s":"Mastery of 10+ AI tools (LLM, video, image)",
+    "certs.i6t":"Scrum & Project Management","certs.i6s":"Hands-on Jira and agile methods in project teams",
+
+    "langues.tag":"Languages","langues.title":"A multicultural profile","langues.subtitle":"6 languages, 3 continents, an open worldview.",
+    "langues.ar":"Native language","langues.fr":"Fluent — studies and work","langues.en":"Professional — technical reading",
+    "langues.ko":"In progress — TOPIK preparation","langues.de":"Beginner","langues.tr":"Beginner",
+
+    "leadership.tag":"Involvement","leadership.title":"Leadership & student life","leadership.subtitle":"Get involved, create, pass it on.",
+    "leadership.l1t":"EcoFinTech ESSECT — IT Department","leadership.l1r":"Active member · Content Strategy","leadership.l1d":"Led content strategy and wrote scripts for videos published on the club's official Instagram page.",
+    "leadership.l2t":"Fahmologia ESSECT","leadership.l2r":"Active member","leadership.l2d":"Participated in club activities: events, workshops and student initiatives.",
+    "leadership.l3t":"Infolab ESSECT","leadership.l3r":"Former member","leadership.l3d":"First student association experience around computing and digital innovation.",
+    "leadership.l4t":"Club Radio ESSECT","leadership.l4r":"Former member","leadership.l4d":"Contributed to audio production and student radio hosting.",
+
+    "contact.tag":"Contact","contact.title":"Let's work together","contact.subtitle":"Looking for a PFE internship in Data BI & AI (February 2027)? Let's talk.",
+    "contact.name":"Your name","contact.email":"Your email","contact.subject":"Subject","contact.message":"Your message",
+    "contact.send":"Send message","contact.success":"Thank you! Your message has been sent.",
+    "contact.locLabel":"Location","contact.loc":"Tunis, Tunisia — ESSECT",
+
+    "footer.rights":"All rights reserved."
+  },
+  ar: {
+    "nav.parcours":"المسار","nav.skills":"المهارات","nav.projects":"المشاريع","nav.certs":"الشهادات","nav.langues":"اللغات","nav.leadership":"الأنشطة","nav.contact":"تواصل",
+    "hero.badge":"🎯 أبحث عن تدريب نهاية الدراسة (PFE) — فيفري 2027","hero.hi":"مرحباً، أنا",
+    "hero.role1":"هندسة الأعمال","hero.role2":"البيانات وذكاء الأعمال والذكاء الاصطناعي","hero.role3":"مؤسِّسة Aralumina Production",
+    "hero.desc":"طالبة في هندسة الأعمال (BI) بـ ESSECT، أبحث عن <strong>تدريب نهاية الدراسة PFE لمدة 3 إلى 4 أشهر ابتداءً من فيفري 2027</strong> في مجال <strong>البيانات وذكاء الأعمال والذكاء الاصطناعي</strong>. شغوفة بالبيانات والذكاء الاصطناعي التوليدي والسرد الرقمي، أحوّل الأفكار إلى حلول ملموسة.",
+    "hero.ctaCv":"تحميل السيرة الذاتية","hero.ctaContact":"تواصلي معي",
+    "hero.stat1":"فيفري 2027 · 3-4 أشهر","hero.stat2":"مشاريع بيانات وذكاء اصطناعي","hero.stat3":"لغات",
+
+    "parcours.tag":"المسار","parcours.title":"قصتي","parcours.subtitle":"من الفضول التقني إلى إنشاء استوديو رقمي.",
+    "parcours.i1t":"الالتحاق بـ ESSECT — هندسة الأعمال","parcours.i1d":"بداية الإجازة في هندسة الأعمال (BI). اكتشاف الخوارزميات وأنظمة المعلومات وذكاء الأعمال.",
+    "parcours.i2t":"الانخراط الجمعياتي والقيادة","parcours.i2d":"عضو نشط في قسم تكنولوجيا المعلومات بنادي EcoFinTech، وFahmologia، وInfolab، وClub Radio.",
+    "parcours.i3t":"ميلاد Aralumina Production","parcours.i3d":"تأسيس استوديو رقمي مدعوم بالذكاء الاصطناعي. إطلاق سلسلة Cook with Ara على يوتيوب وReels وتيك توك.",
+    "parcours.i4t":"المشاريع التقنية والذكاء الاصطناعي","parcours.i4d":"تطوير Coach IA، وDreamscapes، وخط أنابيب لتوليد محتوى فيديو تعليمي.",
+    "parcours.i5t":"🎯 هدف التدريب — فيفري 2027","parcours.i5d":"الحصول على شهادة DATA-DECODED 1.1 في Power BI. أبحث عن تدريب PFE لمدة 3 إلى 4 أشهر ابتداءً من فيفري 2027 في <strong>البيانات وذكاء الأعمال والذكاء الاصطناعي</strong>.",
+
+    "skills.tag":"المهارات","skills.title":"صندوق أدواتي","skills.subtitle":"ملف هجين: بيانات، تطوير، ذكاء اصطناعي وإبداع محتوى.",
+    "skills.c1t":"البيانات وذكاء الأعمال","skills.c1d":"جمع البيانات ونمذجتها وتصوّرها لدعم القرار.",
+    "skills.c2t":"التطوير والهندسة المعمارية","skills.c2d":"تصميم وتطوير تطبيقات سطح المكتب والويب.",
+    "skills.c3t":"الذكاء الاصطناعي التوليدي","skills.c3d":"إتقان مجموعة واسعة من أدوات الذكاء الاصطناعي.",
+    "skills.c4t":"الأدوات والمنهجيات","skills.c4d":"بيئة عمل حديثة، إدارة مشاريع رشيقة وتصميم.",
+
+    "projects.tag":"المشاريع","projects.title":"أعمال ملموسة","projects.subtitle":"مشاريع تجمع بين الكود والبيانات والذكاء الاصطناعي.",
+    "projects.p1t":"Coach IA — تطبيق سطح مكتب Java","projects.p1d":"تطبيق لإدارة المهام بمعمارية ثلاثية الطبقات. دمج Gemini API لتفكيك المهام الذكي.",
+    "projects.p2t":"Dreamscapes — محرك السرد (Laravel)","projects.p2d":"إعادة بناء كاملة على معمارية Laravel MVC. دمج LLM لتوليد السرد.",
+    "projects.p3t":"خط أنابيب الذكاء الاصطناعي — فيديو تعليمي","projects.p3d":"تصميم خط أنابيب يحوّل مدخلات المستخدم إلى محتوى فيديو قصير.",
+    "projects.p4t":"Aralumina Production — استوديو رقمي","projects.p4d":"استوديو محتوى رقمي ينتج سلسلة Cook with Ara. إدارة سير عمل ذكاء اصطناعي كامل.",
+
+    "certs.tag":"الشهادات","certs.title":"التكوين والشهادات","certs.subtitle":"تعلّم مستمر بين البيانات والتطوير والذكاء الاصطناعي.",
+    "certs.i1t":"DATA-DECODED 1.1 — Power BI","certs.i1s":"شهادة أبريل 2026",
+    "certs.i2t":"الإجازة في هندسة الأعمال (BI)","certs.i2s":"ESSECT — سبتمبر 2024 · جوان 2027",
+    "certs.i3t":"Java OOP وJavaFX","certs.i3s":"مشروع Coach IA",
+    "certs.i4t":"Laravel MVC","certs.i4s":"مشروع Dreamscapes",
+    "certs.i5t":"الذكاء الاصطناعي التوليدي","certs.i5s":"إتقان أكثر من 10 أدوات",
+    "certs.i6t":"Scrum وإدارة المشاريع","certs.i6s":"تطبيق عملي لـ Jira",
+
+    "langues.tag":"اللغات","langues.title":"ملف متعدد الثقافات","langues.subtitle":"6 لغات، 3 قارات.",
+    "langues.ar":"اللغة الأم","langues.fr":"بطلاقة","langues.en":"مهنية",
+    "langues.ko":"قيد التقدم","langues.de":"مبتدئة","langues.tr":"مبتدئة",
+
+    "leadership.tag":"الأنشطة","leadership.title":"القيادة والحياة الجمعياتية","leadership.subtitle":"الانخراط، الإبداع، النقل.",
+    "leadership.l1t":"EcoFinTech ESSECT — قسم IT","leadership.l1r":"عضو نشط","leadership.l1d":"قيادة استراتيجية المحتوى وكتابة السيناريوهات.",
+    "leadership.l2t":"Fahmologia ESSECT","leadership.l2r":"عضو نشط","leadership.l2d":"المشاركة في أنشطة النادي.",
+    "leadership.l3t":"Infolab ESSECT","leadership.l3r":"عضو سابق","leadership.l3d":"أول تجربة جمعياتية.",
+    "leadership.l4t":"Club Radio ESSECT","leadership.l4r":"عضو سابق","leadership.l4d":"المساهمة في الإنتاج الصوتي.",
+
+    "contact.tag":"تواصل","contact.title":"لنعمل معاً","contact.subtitle":"أبحث عن تدريب PFE في البيانات وذكاء الأعمال (فيفري 2027)؟ لنتحدث.",
+    "contact.name":"الاسم","contact.email":"البريد","contact.subject":"الموضوع","contact.message":"رسالتك",
+    "contact.send":"إرسال","contact.success":"شكراً! تم إرسال رسالتك.",
+    "contact.locLabel":"الموقع","contact.loc":"تونس — ESSECT",
+
+    "footer.rights":"جميع الحقوق محفوظة."
+  }
+};
+
+let currentLang = "fr";
+
+function applyLang(lang){
+  currentLang = lang;
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el=>{
+    const key = el.getAttribute("data-i18n-ph");
+    if(dict[key] !== undefined) el.setAttribute("placeholder", dict[key]);
+  });
+
+  document.querySelectorAll("#langSwitch button").forEach(b=>{
+    b.classList.toggle("active", b.dataset.lang === lang);
+  });
+  try{ localStorage.setItem("ameni-lang", lang); }catch(e){}
+}
+
+document.querySelectorAll("#langSwitch button").forEach(btn=>{
+  btn.addEventListener("click", ()=> applyLang(btn.dataset.lang));
+});
+
+/* =========================================================
+   2. THÈME CLAIR / SOMBRE
+   ========================================================= */
+const root = document.documentElement;
+function setTheme(theme){
+  root.setAttribute("data-theme", theme);
+  try{ localStorage.setItem("ameni-theme", theme); }catch(e){}
+}
+document.getElementById("themeToggle").addEventListener("click", ()=>{
+  setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+});
+
+/* =========================================================
+   3. CANVAS — PARTICULES INTERACTIVES
+   ========================================================= */
+(function particles(){
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  let mouse = { x: null, y: null, r: 160 };
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize(){
+    canvas.width  = window.innerWidth  * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width  = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    init();
+  }
+
+  function init(){
+    const w = window.innerWidth, h = window.innerHeight;
+    const count = Math.min(110, Math.floor((w * h) / 16000));
+    particles = [];
+    for(let i = 0; i < count; i++){
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - .5) * .45,
+        vy: (Math.random() - .5) * .45,
+        r: Math.random() * 1.9 + .9
+      });
+    }
+  }
+
+  function color(){
+    return getComputedStyle(root).getPropertyValue("--particle").trim() || "100,180,255";
+  }
+
+  function draw(){
+    const w = window.innerWidth, h = window.innerHeight;
+    const c = color();
+    ctx.clearRect(0, 0, w, h);
+
+    for(let i = 0; i < particles.length; i++){
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+
+      if(p.x < 0 || p.x > w) p.vx *= -1;
+      if(p.y < 0 || p.y > h) p.vy *= -1;
+
+      if(mouse.x !== null){
+        const dx = p.x - mouse.x, dy = p.y - mouse.y;
+        const dist = Math.hypot(dx, dy);
+        if(dist < mouse.r && dist > 0){
+          const force = (mouse.r - dist) / mouse.r;
+          p.x += (dx / dist) * force * 3.2;
+          p.y += (dy / dist) * force * 3.2;
+        }
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(" + c + ",0.8)";
+      ctx.fill();
+
+      for(let j = i + 1; j < particles.length; j++){
+        const q = particles[j];
+        const dx = p.x - q.x, dy = p.y - q.y;
+        const d = Math.hypot(dx, dy);
+        if(d < 130){
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = "rgba(" + c + "," + (0.18 * (1 - d / 130)).toFixed(3) + ")";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("mousemove", e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
+  window.addEventListener("resize", resize);
+  window.addEventListener("touchmove", e => {
+    if(e.touches[0]){ mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }
+  }, {passive:true});
+
+  resize();
+  draw();
+})();
+
+/* =========================================================
+   4. HEADER : scroll + menu mobile
+   ========================================================= */
+const header = document.getElementById("header");
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 20);
+}, {passive:true});
+
+const nav = document.getElementById("nav");
+document.getElementById("burger").addEventListener("click", () => nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+
+/* =========================================================
+   5. REVEAL AU SCROLL
+   ========================================================= */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if(entry.isIntersecting){
+      setTimeout(() => entry.target.classList.add("visible"), i * 70);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: .12, rootMargin: "0px 0px -60px 0px" });
+
+document.querySelectorAll(".reveal, .tl-item").forEach(el => observer.observe(el));
+
+/* =========================================================
+   6. TÉLÉCHARGEMENT DU CV — PDF RÉEL
+   =========================================================
+   💡 Pour utiliser VOTRE vrai CV PDF :
+   1. Placez le fichier "CV_Ameni_Ben_Nasr.pdf" dans le même dossier que ce index.html
+   2. Le bouton ci-dessous le téléchargera automatiquement.
+   Si vous n'avez pas encore de PDF, le bouton génère un CV texte de secours.
+   ========================================================= */
+const CV_TEXT = {
+  fr: `AMENI BEN NASR
+Business Computing (BI) — ESSECT Tunis
+Fondatrice d'Aralumina Production
+
+🎯 OBJECTIF : Stage PFE de 3 à 4 mois — Février 2027 — Data BI & IA
+
+CONTACT
+Email      : ameni.bennasr@essect.u-tunis.tn
+Téléphone  : +216 56 623 380
+LinkedIn   : linkedin.com/in/ameni-ben-nasr-
+GitHub     : github.com/ameni03bennasr-create
+
+RÉSUMÉ
+Étudiante en Business Computing à l'ESSECT (Tunis), avec une expertise pratique
+en Data & BI (Power BI, MySQL, Python), développement d'applications Java OOP
+et IA générative appliquée. Lead créatif à EcoFinTech ESSECT (département IT) et
+fondatrice du studio digital Aralumina Production. À la recherche d'un stage PFE
+de 3 à 4 mois à partir de Février 2027 en Data BI & Intelligence Artificielle
+pour contribuer à des projets Data/Tech concrets au sein d'une équipe innovante.
+
+FORMATION
+ESSECT — Licence Business Computing (BI)
+Tunis, Tunisie · Sept 2024 - Juin 2027 (prévu)
+
+PROJETS
+- Coach IA — Application Desktop Java (JavaFX / MySQL + Gemini API)
+- Dreamscapes — Moteur de narration (Laravel MVC + LLM)
+- Pipeline IA — Génération de vidéo éducative
+- Aralumina Production — Studio Digital IA
+
+COMPÉTENCES
+- Data & BI : Power BI, DAX, MySQL/SQL, Python, Google Apps Script
+- Développement : Java OOP, JavaFX, Laravel, JavaScript, Git
+- IA Générative : LLM, Kling, Veo3, Luma, LTX Studio, Prompt Engineering
+- Outils : VS Code, PlantUML, Draw.io, Jira (Scrum), Canva, Notion
+
+CERTIFICATIONS
+- DATA-DECODED 1.1 — Power BI (Avril 2026)
+
+LANGUES
+Arabe (natif), Français (B2), Anglais (B1), Coréen (A2), Allemand (A1), Turc (A1)
+
+---
+© 2026 Ameni Ben Nasr`,
+  en: `AMENI BEN NASR
+Business Computing (BI) — ESSECT Tunis
+Founder of Aralumina Production
+
+🎯 OBJECTIVE: 3-4 month PFE internship — February 2027 — Data BI & AI
+
+CONTACT
+Email      : ameni.bennasr@essect.u-tunis.tn
+Phone      : +216 56 623 380
+LinkedIn   : linkedin.com/in/ameni-ben-nasr-
+GitHub     : github.com/ameni03bennasr-create
+
+SUMMARY
+Business Computing student at ESSECT (Tunis) with hands-on expertise in Data & BI,
+Java OOP development and applied Generative AI. Creative lead at EcoFinTech ESSECT
+and founder of Aralumina Production. Looking for a 3-4 month PFE internship starting
+February 2027 in Data BI & Artificial Intelligence to contribute to concrete
+Data/Tech projects within an innovative team.
+
+EDUCATION
+ESSECT — Bachelor in Business Computing (BI)
+Tunis, Tunisia · Sept 2024 - Jun 2027 (expected)
+
+PROJECTS
+- Coach IA — Java Desktop Application (JavaFX / MySQL + Gemini API)
+- Dreamscapes — Storytelling Engine (Laravel MVC + LLM)
+- AI Pipeline — Educational Video Generation
+- Aralumina Production — AI Digital Studio
+
+SKILLS
+- Data & BI: Power BI, DAX, MySQL/SQL, Python, Google Apps Script
+- Development: Java OOP, JavaFX, Laravel, JavaScript, Git
+- Generative AI: LLMs, Kling, Veo3, Luma, LTX Studio, Prompt Engineering
+- Tools: VS Code, PlantUML, Draw.io, Jira (Scrum), Canva, Notion
+
+CERTIFICATIONS
+- DATA-DECODED 1.1 — Power BI (April 2026)
+
+LANGUAGES
+Arabic (Native), French (B2), English (B1), Korean (A2), German (A1), Turkish (A1)
+
+---
+© 2026 Ameni Ben Nasr`,
+  ar: `أميني بن نصر
+هندسة الأعمال (BI) — ESSECT تونس
+مؤسِّسة Aralumina Production
+
+🎯 الهدف: تدريب نهاية الدراسة PFE لمدة 3 إلى 4 أشهر — فيفري 2027 — البيانات وذكاء الأعمال والذكاء الاصطناعي
+
+معلومات التواصل
+البريد : ameni.bennasr@essect.u-tunis.tn
+الهاتف : 216 56 623 380+
+لينكدإن : linkedin.com/in/ameni-ben-nasr-
+GitHub : github.com/ameni03bennasr-create
+
+الملخص
+طالبة في هندسة الأعمال بـ ESSECT، خبرة في البيانات وذكاء الأعمال، تطوير Java OOP،
+والذكاء الاصطناعي التوليدي. مؤسِّسة Aralumina Production. أبحث عن تدريب PFE لمدة
+3 إلى 4 أشهر ابتداءً من فيفري 2027 في البيانات وذكاء الأعمال والذكاء الاصطناعي.
+
+التكوين
+ESSECT — إجازة هندسة الأعمال (BI)
+تونس · سبتمبر 2024 - جوان 2027
+
+المشاريع
+- Coach IA — تطبيق سطح مكتب Java
+- Dreamscapes — محرك السرد (Laravel)
+- خط أنابيب الذكاء الاصطناعي — فيديو تعليمي
+- Aralumina Production — استوديو رقمي
+
+المهارات
+- البيانات : Power BI، DAX، MySQL، Python
+- التطوير : Java OOP، JavaFX، Laravel، JavaScript
+- الذكاء الاصطناعي : LLM، Kling، Veo3، Luma، LTX Studio
+- الأدوات : VS Code، PlantUML، Jira، Canva
+
+الشهادات
+- DATA-DECODED 1.1 — Power BI (أبريل 2026)
+
+اللغات
+العربية، الفرنسية، الإنجليزية، الكورية، الألمانية، التركية
+
+---
+© 2026 أميني بن نصر`
+};
+
+document.getElementById("downloadCv").addEventListener("click", () => {
+  const content = CV_TEXT[currentLang] || CV_TEXT.fr;
+  const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "CV_Ameni_Ben_Nasr.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+});
+
+/* =========================================================
+   7. FORMULAIRE DE CONTACT
+   ========================================================= */
+document.getElementById("contactForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const msg = document.getElementById("formMsg");
+  msg.classList.add("show");
+  e.target.reset();
+  setTimeout(() => msg.classList.remove("show"), 5000);
+});
+
+/* =========================================================
+   8. FALLBACK PHOTO DE PROFIL (SVG bleu "AB")
+   ========================================================= */
+(function photoFallback(){
+  const img = document.getElementById("profilePhoto");
+  const placeholder = "data:image/svg+xml;utf8," + encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' width='700' height='700'>" +
+    "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>" +
+    "<stop offset='0' stop-color='#1E90FF'/><stop offset='1' stop-color='#00E5FF'/>" +
+    "</linearGradient></defs>" +
+    "<rect width='700' height='700' fill='url(#g)'/>" +
+    "<text x='50%' y='54%' font-family='sans-serif' font-size='230' font-weight='bold' " +
+    "fill='white' text-anchor='middle' dominant-baseline='middle'>AB</text></svg>"
+  );
+  img.addEventListener("error", () => {
+    if(img.src !== placeholder) img.src = placeholder;
+  }, { once:true });
+})();
+
+/* =========================================================
+   9. INITIALISATION
+   ========================================================= */
+(function init(){
+  let savedTheme = null, savedLang = null;
+  try{
+    savedTheme = localStorage.getItem("ameni-theme");
+    savedLang  = localStorage.getItem("ameni-lang");
+  }catch(e){}
+
+  setTheme(savedTheme || "dark");
+  applyLang(savedLang || "fr");
+})();
+</script>
+</body>
+</html>
